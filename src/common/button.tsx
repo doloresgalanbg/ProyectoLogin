@@ -1,7 +1,7 @@
 
 import styled from "styled-components";
 export const Button = styled.button`
-display: block;
+  display: block;
   background: #0085FF;
   font-weight: 600;
   font-family: cursive;

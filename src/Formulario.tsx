@@ -4,12 +4,13 @@ import { Home } from "./Home";
 import { Button } from "./common/button";
 import { Form_ } from "./common/form";
 import { Navigate, BrowserRouter, Routes } from "react-router-dom";
-import { Ejemplo } from "./Ejemplo";
 import { useNavigate } from "react-router-dom"
+import user from './data/usuarios.json';
 
 export const Formulario = () => {
   const [enviado, setEnviado] = useState(false);
-  const [usuario, setUsuario] = useState("");
+  const [usuario, setUsuario] = useState({nombre: "",
+  password: "",});
   let history = useNavigate()
 
   return (
@@ -41,8 +42,12 @@ export const Formulario = () => {
           onSubmit={(valores, { resetForm }) => {
             resetForm();
             console.log(valores);
+            console.log(user)
             setEnviado(true);
-            setUsuario(valores.nombre);
+            setUsuario(valores);
+            console.log(enviado)
+            const found = user.find(element => element === valores  )
+            console.log(found)
             history("/home")
           }}
         >
@@ -86,8 +91,10 @@ export const Formulario = () => {
                 )}
               </div>
               <Button type="submit">Login</Button>
-              {enviado && <p className="exito">{usuario} te has logueado con éxito</p>} 
-            
+              
+              {enviado && <p className="exito">{usuario.nombre} te has logueado con éxito</p>} 
+             {/* { user.includes(usuario) ? history("/home") : <Formulario/> } */}
+           
             </Form_>
           )}
         </Formik>

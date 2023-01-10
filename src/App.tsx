@@ -4,7 +4,6 @@ import { Formulario } from "./Formulario";
 import styled from "styled-components";
 import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 import { Home } from "./Home";
-import { Ejemplo } from "./Ejemplo";
 const Box = styled.div`
   min-height: 100vh;
   display: flex;
